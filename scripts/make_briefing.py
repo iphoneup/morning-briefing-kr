@@ -254,6 +254,8 @@ def main() -> int:
     limit_up = extract_limit_up(max_items=10)
     sectors = load_sectors()
 
+    sector_order = list(sectors.keys())  # 추가
+
     out = {
         "generated_at": ts.strftime("%Y-%m-%d %H:%M:%S %Z"),
         "date": ts.strftime("%Y-%m-%d"),
@@ -261,7 +263,8 @@ def main() -> int:
         "weekend_note": "금요일 장 기준 브리핑입니다." if is_weekend else "",
         "news": news,
         "limit_up": limit_up,
-        "sectors": sectors
+        "sectors": sectors,
+        "sector_order": sector_order     # 추가
     }
 
     with OUT_FILE.open("w", encoding="utf-8") as f:
