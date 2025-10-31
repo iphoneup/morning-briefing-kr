@@ -9,8 +9,6 @@
 
 출력: 리포 루트에 briefing.json
 """
-from future import annotations
-
 from urllib.parse import quote_plus
 import json
 import re
