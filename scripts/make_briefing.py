@@ -9,7 +9,7 @@
 
 출력: 리포 루트에 briefing.json
 """
-
+from urllib.parse import quote_plus
 from __future__ import annotations
 import json
 import re
@@ -70,7 +70,7 @@ def last_trading_day(base_dt: datetime) -> datetime:
 
 
 def get_google_news(query: str, max_items: int = 5) -> List[Dict[str, Any]]:
-    url = GN_RSS.format(q=requests.utils.quote(query, safe=" "))
+    url = GN_RSS.format(q=quote_plus(query))
     feed = feedparser.parse(url)
     items = []
     for e in feed.entries[:max_items]:
